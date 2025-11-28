@@ -1,0 +1,4 @@
+127.0.0.1       node-00.intel.r7g.org
+127.0.0.1       node-01.intel.r7g.org
+127.0.0.1       node-02.intel.r7g.org
+127.0.0.1       node-03.intel.r7g.org
