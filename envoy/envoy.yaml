@@ -69,10 +69,9 @@ static_resources:
                     typed_config:
                       "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
                 access_log:
-                  - name: envoy.access_loggers.file
+                  - name: envoy.access_loggers.stdout
                     typed_config:
-                      "@type": type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog
-                      path: /var/log/envoy/access.log
+                      "@type": type.googleapis.com/envoy.extensions.access_loggers.stream.v3.StdoutAccessLog
                       log_format:
                         json_format:
                           timestamp: "%START_TIME%"
@@ -170,7 +169,7 @@ static_resources:
             - name: envoy.health_check.event_logger.file
               typed_config:
                 "@type": type.googleapis.com/envoy.extensions.health_check.event_sinks.file.v3.HealthCheckEventFileSink
-                event_log_path: /var/log/envoy/healthcheck.log
+                event_log_path: /dev/stdout
       transport_socket_matches:
         - name: node-10
           match:
