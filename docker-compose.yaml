@@ -23,6 +23,7 @@ services:
     volumes:
       - ./envoy/envoy.yaml:/etc/envoy/envoy.yaml:ro
       - ./ssl:/data/cluster/certificates:ro
+      - ./logs:/var/log/envoy
     restart: always
 
   node-01:
