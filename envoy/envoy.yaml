@@ -99,7 +99,7 @@ static_resources:
       connect_timeout: 1s
       type: STRICT_DNS
       dns_lookup_family: V4_ONLY
-      lb_policy: ROUND_ROBIN
+      lb_policy: RANDOM
       common_lb_config:
         healthy_panic_threshold:
           value: 0
