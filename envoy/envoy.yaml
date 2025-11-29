@@ -119,42 +119,42 @@ static_resources:
               - endpoint:
                   address:
                     socket_address:
-                      address: node-01.intel.r7g.org
-                      port_value: 8401
+                      address: node-10.intel.r7g.org
+                      port_value: 9041
                   health_check_config:
-                    hostname: node-01.intel.r7g.org
+                    hostname: node-10.intel.r7g.org
                 metadata:
                   filter_metadata:
                     envoy.lb:
-                      host_header: "node-01.intel.r7g.org"
+                      host_header: "node-10.intel.r7g.org"
                     envoy.transport_socket_match:
-                      sni_label: "node-01"
+                      sni_label: "node-10"
               - endpoint:
                   address:
                     socket_address:
-                      address: node-02.intel.r7g.org
-                      port_value: 8402
+                      address: node-11.intel.r7g.org
+                      port_value: 9041
                   health_check_config:
-                    hostname: node-02.intel.r7g.org
+                    hostname: node-11.intel.r7g.org
                 metadata:
                   filter_metadata:
                     envoy.lb:
-                      host_header: "node-02.intel.r7g.org"
+                      host_header: "node-11.intel.r7g.org"
                     envoy.transport_socket_match:
-                      sni_label: "node-02"
+                      sni_label: "node-11"
               - endpoint:
                   address:
                     socket_address:
-                      address: node-03.intel.r7g.org
-                      port_value: 8403
+                      address: node-12.intel.r7g.org
+                      port_value: 9041
                   health_check_config:
-                    hostname: node-03.intel.r7g.org
+                    hostname: node-12.intel.r7g.org
                 metadata:
                   filter_metadata:
                     envoy.lb:
-                      host_header: "node-03.intel.r7g.org"
+                      host_header: "node-12.intel.r7g.org"
                     envoy.transport_socket_match:
-                      sni_label: "node-03"
+                      sni_label: "node-12"
       health_checks:
         - timeout: 2s
           interval: 15s
@@ -172,14 +172,14 @@ static_resources:
                 "@type": type.googleapis.com/envoy.extensions.health_check.event_sinks.file.v3.HealthCheckEventFileSink
                 event_log_path: /var/log/envoy/healthcheck.log
       transport_socket_matches:
-        - name: node-01
+        - name: node-10
           match:
-            sni_label: "node-01"
+            sni_label: "node-10"
           transport_socket:
             name: envoy.transport_sockets.tls
             typed_config:
               "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext
-              sni: node-01.intel.r7g.org
+              sni: node-10.intel.r7g.org
               common_tls_context:
                 tls_params:
                   tls_minimum_protocol_version: TLSv1_3
@@ -192,14 +192,14 @@ static_resources:
                 validation_context:
                   trusted_ca:
                     filename: "/data/cluster/certificates/CA/ca.crt"
-        - name: node-02
+        - name: node-11
           match:
-            sni_label: "node-02"
+            sni_label: "node-11"
           transport_socket:
             name: envoy.transport_sockets.tls
             typed_config:
               "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext
-              sni: node-02.intel.r7g.org
+              sni: node-11.intel.r7g.org
               common_tls_context:
                 tls_params:
                   tls_minimum_protocol_version: TLSv1_3
@@ -212,14 +212,14 @@ static_resources:
                 validation_context:
                   trusted_ca:
                     filename: "/data/cluster/certificates/CA/ca.crt"
-        - name: node-03
+        - name: node-12
           match:
-            sni_label: "node-03"
+            sni_label: "node-12"
           transport_socket:
             name: envoy.transport_sockets.tls
             typed_config:
               "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext
-              sni: node-03.intel.r7g.org
+              sni: node-12.intel.r7g.org
               common_tls_context:
                 tls_params:
                   tls_minimum_protocol_version: TLSv1_3
