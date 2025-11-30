@@ -42,18 +42,16 @@ static_resources:
                   idle_timeout: 60s
                 route_config:
                   name: secure_route
+                  response_headers_to_add:
+                    - header:
+                        key: "X-Upstream-Node"
+                        value: "%UPSTREAM_HOST%"
                   virtual_hosts:
                     - name: node_backends
                       domains: ["*"]
                       routes:
                         - match:
                             prefix: "/"
-                            headers:
-                              - name: ":authority"
-                                string_match:
-                                  safe_regex:
-                                    google_re2: {}
-                                    regex: "^node-00\\.intel\\.r7g\\.org(:8400)?$"
                           route:
                             cluster: secure_nodes
                             timeout: 5s
