@@ -19,7 +19,7 @@ services:
     container_name: balancer-envoy
     ports:
       - "8400:8400"        # Exposes Envoy to host
-      - "9401:9401"        # Exposes Envoy to host
+      - "9000:9000"        # Exposes Envoy to host
     volumes:
       - ./envoy/envoy.yaml:/etc/envoy/envoy.yaml:ro
       - ./ssl:/data/cluster/certificates:ro
