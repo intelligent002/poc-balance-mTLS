@@ -158,7 +158,7 @@ static_resources:
           unhealthy_threshold: 1
           healthy_threshold: 2
           http_health_check:
-            path: "/health"
+            path: "/"
             codec_client_type: HTTP1
             expected_statuses:
               - start: 200
